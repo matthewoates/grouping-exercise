@@ -1,2 +1,26 @@
 input1.csv, input2.csv, input3.csv
 These files are from the hiring-exercises repo.
+
+Corner Cases:
+    input4.csv:
+    There should be no issues with having many phone numbers and emails per entry.
+
+    input5.csv:
+    The program should handle empty data sets gracefully.
+
+    input6.csv:
+    the '\n' character should also be recognized.
+
+    input7.csv:
+    Unrecognized fields should be preserved.
+
+    input8.csv:
+    The tab key should be recognized as a delimiter.
+
+    input9.csv:
+    Fields can be arbitrarly quoted.
+
+
+Data Parsing:
+    input10.csv:
+    All of these phone numbers should be recognized as similar.
