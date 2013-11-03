@@ -11,13 +11,13 @@ default: bin java
 .PHONY: clean run bin java
 
 run:
-	cd bin && java Main $(RUN_ARGS)
+	java -cp bin:lib/opencsv-2.3.jar Main $(RUN_ARGS)
 
 bin:
 	mkdir -p bin
 
 java:
-	javac -d bin src/Main.java
+	javac -d bin -cp lib/opencsv-2.3.jar src/Main.java
 
 
 clean:
