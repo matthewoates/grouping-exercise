@@ -11,13 +11,13 @@ default: bin java
 .PHONY: clean run bin java
 
 run:
-	java -ea -cp bin:lib/opencsv-2.3.jar Main $(RUN_ARGS)
+	cd bin && java -ea -cp .:lib/opencsv-2.3.jar grouper/Grouper $(RUN_ARGS)
 
 bin:
 	mkdir -p bin
 
 java:
-	javac -d bin -cp lib/opencsv-2.3.jar src/Main.java
+	javac -d bin -cp lib/opencsv-2.3.jar src/*.java
 
 
 clean:
