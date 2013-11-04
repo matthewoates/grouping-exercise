@@ -1,15 +1,9 @@
 package grouper;
 
-import au.com.bytecode.opencsv.CSVParser;
-import au.com.bytecode.opencsv.CSVReader;
-import au.com.bytecode.opencsv.CSVWriter;
-import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
-import au.com.bytecode.opencsv.bean.CsvToBean;
-
+import au.com.bytecode.opencsv.*;
 import java.io.*;
 import java.util.*;
 
-import grouper.*;
 
 public class Parser {
     private String[] header;

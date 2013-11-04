@@ -1,11 +1,6 @@
 package grouper;
 
-import grouper.Grouper;
-
 import au.com.bytecode.opencsv.*;
-import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
-import au.com.bytecode.opencsv.bean.CsvToBean;
-
 import java.io.*;
 
 public class TestRunner {
