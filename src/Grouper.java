@@ -26,8 +26,10 @@ public class Grouper {
             }
         } else if (args.length == 2) {
             // [input_file] [matching_type]
+            String inputFile = args[0];
+            MatchType m = MatchType.fromString(args[1]);
         } else {
-            System.out.println("bad usage");
+            usage();
             exitCode = 1;
         }
 
@@ -41,5 +43,15 @@ public class Grouper {
         Entry[] entries = parser.getEntries();
 
 
+    }
+
+    private static void usage() {
+        System.out.println("usage:");
+        System.out.println("    make run [input_file] [matching_type]");
+        System.out.println("\nSupported Matching types:");
+        for (MatchType m : MatchType.values()) {
+            System.out.println("    " + m.getFlag());
+        }
+        System.out.println("\n");
     }
 }
