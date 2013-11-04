@@ -1,5 +1,7 @@
 package grouper;
 
+import java.io.*;
+
 public class Grouper {
     public static void main(String[] args) throws Exception {
         int exitCode = 0;
@@ -15,7 +17,7 @@ public class Grouper {
             String inputFile = args[0];
             MatchType m = MatchType.fromString(args[1]);
 
-            group(inputFile, m);
+            group(inputFile, m, new PrintWriter(System.out));
         } else {
             usage();
             exitCode = 1;
@@ -24,14 +26,14 @@ public class Grouper {
         System.exit(exitCode);
     }
 
-    public static void group(String path, MatchType matchType) throws Exception {
+    public static void group(String path, MatchType matchType, Writer writer) throws Exception {
         System.out.println("grouping " + path + "." + matchType.getFlag());
 
         Parser parser = new Parser(path);
 
         parser.findMatches(matchType);
 
-        parser.writeResults();
+        parser.writeResults(writer);
     }
 
     private static void usage() {

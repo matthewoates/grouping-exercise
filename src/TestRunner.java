@@ -24,7 +24,7 @@ public class TestRunner {
 
     private static boolean testFile(String path) throws Exception {
         for (MatchType m : MatchType.values()) {
-            Grouper.group(path, m);
+            Grouper.group(path, m, new PrintWriter(System.out));
         }
 
         return true;

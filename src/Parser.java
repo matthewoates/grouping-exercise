@@ -57,9 +57,9 @@ public class Parser {
         return entries;
     }
 
-    public void writeResults() {
+    public void writeResults(Writer w) {
         // all matching has been done. Now, print out the results
-        CSVWriter writer = new CSVWriter(new PrintWriter(System.out));
+        CSVWriter writer = new CSVWriter(w);
 
         writer.writeNext(header);
 
