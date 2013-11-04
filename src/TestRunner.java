@@ -10,7 +10,8 @@ import java.io.*;
 
 public class TestRunner {
     private static boolean testFileExists(int index) {
-        return new File(getTestPath(index)).exists();
+        return index == 1;
+        //return new File(getTestPath(index)).exists();
     }
 
     private static String getTestPath(int testID) {

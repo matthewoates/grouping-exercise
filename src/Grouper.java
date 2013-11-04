@@ -32,7 +32,9 @@ public class Grouper {
         System.exit(exitCode);
     }
 
-    public static void group(String path) {
+    public static void group(String path) throws Exception {
         System.out.println("grouping " + path + ".");
+
+        Parser parser = new Parser(path);
     }
 }
