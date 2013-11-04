@@ -20,4 +20,5 @@ are different phone numbers.
 
 Dependencies
 =================
-requires java 1.6
+java 1.6
+GNU make
