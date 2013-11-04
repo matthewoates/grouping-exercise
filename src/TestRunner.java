@@ -14,7 +14,7 @@ public class TestRunner {
     }
 
     private static String getExpectedOutputFilePath(int testID, MatchType matchType) {
-        return "../tests/" + matchType.getFlag() + "/expected" + testID + ".csv";
+        return "../tests/" + matchType.getFlag() + "/expected" + testID + ".txt";
     }
 
     public static void runTests() throws Exception {
