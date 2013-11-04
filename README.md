@@ -17,7 +17,7 @@ make run [input_file (path relative to bin/)] [matching_type]
 *NOTE: Due to the build and execution environment, paths to the input file must be relative to the bin directory that contains the build.*
 
 # The Algorithm
-**Complexity: O(MN)**
+**Complexity: O(MN) space and time**
 *(where M is the number of columns for the matching type, and N is the number of rows. In practice, M is very low)*
 
 Firstly, all fields are sanitized. This removes things like phone number formatting and country codes.
