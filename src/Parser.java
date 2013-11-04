@@ -25,7 +25,6 @@ public class Parser {
         }
     }
 
-    //ArrayList<HashMap<String, ArrayList<String>>> getEntries() {
     Entry[] getEntries() {
         return entries;
     }
