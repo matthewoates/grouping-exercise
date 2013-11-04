@@ -42,7 +42,8 @@ public class Grouper {
         System.out.println("grouping " + path + "." + matchType.getFlag());
 
         Parser parser = new Parser(path);
-        Entry[] entries = parser.getEntries();
+
+        parser.findMatches(matchType);
 
         parser.writeResults();
     }

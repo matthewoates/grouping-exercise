@@ -9,6 +9,8 @@ import au.com.bytecode.opencsv.bean.CsvToBean;
 import java.io.*;
 import java.util.*;
 
+import grouper.*;
+
 public class Parser {
     private String[] header;
     private Entry[] entries;
@@ -22,6 +24,24 @@ public class Parser {
 
         for (int i = 1; i < data.size(); i++) {
             entries[i - 1] = new Entry(header, data.get(i));
+        }
+    }
+
+    void findMatches(MatchType m) {
+        HashMap<String, Entry> anchors = new HashMap<String, Entry>();
+
+        for (Entry entry : entries) {
+            ArrayList<String> fields = entry.getField(m.getFieldName());
+
+            for (String field : fields) {
+                if (anchors.containsKey(field)) {
+                    // we have a match!
+                    entry.addMatch(anchors.get(field));
+                } else {
+                    // push the entry in there so others can find it
+                    anchors.put(field, entry);
+                }
+            }
         }
     }
 
