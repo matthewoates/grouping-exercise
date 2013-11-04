@@ -20,9 +20,10 @@ public class TestRunner {
     public static void runTests() throws Exception {
         // run files from test1.csv sequentially, until there are no more files
         for (int i = 1; fileExists(getInputFilePath(i)); i++) {
-            boolean success = testFile(i, MatchType.samePhone);
-
-            System.out.println(i + ": " + (success ? "PASSED" : "FAILED"));
+            for (MatchType matchType : MatchType.values()) {
+                boolean success = testFile(i, matchType);
+                System.out.println((success ? "PASSED" : "FAILED") + " test " + i + " with match type " + matchType.getFlag());
+            }
         }
     }
 
@@ -38,7 +39,7 @@ public class TestRunner {
         }
 
         if (fileExists(getExpectedOutputFilePath(index, matchType))) {
-            outputIsValid(writer.toString(), index, matchType);
+            success = success && outputIsValid(writer.toString(), index, matchType);
         } else {
             System.out.println("omitting output validation for test " + index + " with match type " + matchType.getFieldName());
         }
