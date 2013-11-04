@@ -27,8 +27,6 @@ public class Grouper {
     }
 
     public static void group(String path, MatchType matchType, Writer writer) throws Exception {
-        System.out.println("grouping " + path + "." + matchType.getFlag());
-
         Parser parser = new Parser(path);
 
         parser.findMatches(matchType);
