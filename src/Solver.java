@@ -5,11 +5,11 @@ import java.io.*;
 import java.util.*;
 
 
-public class Parser {
+public class Solver {
     private String[] header;
     private Entry[] entries;
 
-    Parser(String inputFile) throws Exception {
+    public Solver(String inputFile) throws Exception {
         CSVReader reader = new CSVReader(new FileReader(inputFile), getDelimiter(inputFile));
 
         List<String[]> data = reader.readAll();
@@ -35,7 +35,7 @@ public class Parser {
         return tabDelimiter ? '\t' : ',';
     }
 
-    void findMatches(MatchType m) {
+    public void findMatches(MatchType m) {
         HashMap<String, Entry> anchors = new HashMap<String, Entry>();
 
         for (Entry entry : entries) {
@@ -53,7 +53,7 @@ public class Parser {
         }
     }
 
-    Entry[] getEntries() {
+    public Entry[] getEntries() {
         return entries;
     }
 

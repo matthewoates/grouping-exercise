@@ -25,11 +25,10 @@ public class Grouper {
     }
 
     public static void group(String path, MatchType matchType, Writer writer) throws Exception {
-        Parser parser = new Parser(path);
+        Solver solver = new Solver(path);
 
-        parser.findMatches(matchType);
-
-        parser.writeResults(writer);
+        solver.findMatches(matchType);
+        solver.writeResults(writer);
     }
 
     private static void usage() {
