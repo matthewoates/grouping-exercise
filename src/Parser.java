@@ -16,7 +16,7 @@ public class Parser {
     private Entry[] entries;
 
     Parser(String inputFile) throws Exception {
-        CSVReader reader = new CSVReader(new FileReader(inputFile));
+        CSVReader reader = new CSVReader(new FileReader(inputFile), getDelimiter(inputFile));
 
         List<String[]> data = reader.readAll();
         header = data.get(0);
@@ -25,6 +25,20 @@ public class Parser {
         for (int i = 1; i < data.size(); i++) {
             entries[i - 1] = new Entry(header, data.get(i));
         }
+    }
+
+    private char getDelimiter(String inputFile) throws Exception {
+        // CSV files can use a tab as a delimiter as well
+        Scanner s = new Scanner(new File(inputFile));
+        String firstLine = "";
+
+        if (s.hasNextLine()) {
+            firstLine = s.nextLine();
+        }
+
+        boolean tabDelimiter = (firstLine.indexOf(",") == -1 && firstLine.indexOf("\t") != -1);
+
+        return tabDelimiter ? '\t' : ',';
     }
 
     void findMatches(MatchType m) {
