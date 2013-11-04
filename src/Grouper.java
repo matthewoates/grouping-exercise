@@ -4,8 +4,6 @@ import java.io.*;
 
 public class Grouper {
     public static void main(String[] args) throws Exception {
-        int exitCode = 0;
-
         if (args.length == 1 && args[0].equals("-test")) {
             try {
                 TestRunner.runTests();
@@ -13,17 +11,17 @@ public class Grouper {
                 System.out.println(e);
             }
         } else if (args.length == 2) {
-            // [input_file] [matching_type]
             String inputFile = args[0];
-            MatchType m = MatchType.fromString(args[1]);
+            MatchType matchType = MatchType.fromString(args[1]);
 
-            group(inputFile, m, new PrintWriter(System.out));
+            if (matchType != null) {
+                group(inputFile, matchType, new PrintWriter(System.out));
+            } else {
+                usage();
+            }
         } else {
             usage();
-            exitCode = 1;
         }
-
-        System.exit(exitCode);
     }
 
     public static void group(String path, MatchType matchType, Writer writer) throws Exception {
@@ -42,5 +40,7 @@ public class Grouper {
             System.out.println("    " + m.getFlag());
         }
         System.out.println("\n");
+
+        System.exit(1);
     }
 }
