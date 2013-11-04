@@ -12,7 +12,7 @@ git clone https://github.com/matthewoates/grouping-exercise.git
 cd grouping-exercise
 make
 make test
-make run [matching_type] [input_file (path relative to bin/)]
+make run [input_file (path relative to bin/)] [matching_type]
 ```
 *NOTE: Due to the build and execution environment, paths to the input file must be relative to the bin directory that contains the build.*
 
