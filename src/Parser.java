@@ -61,7 +61,7 @@ public class Parser {
         // all matching has been done. Now, print out the results
         CSVWriter writer = new CSVWriter(w);
 
-        writer.writeNext(header);
+        writer.writeNext(prependElement(header, "ID"));
 
         int id = 1;
 
@@ -78,5 +78,17 @@ public class Parser {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private String[] prependElement(String[] arr, String element) {
+        String[] result = new String[arr.length + 1];
+
+        result[0] = element;
+
+        for (int i = 0; i < arr.length; i++) {
+            result[i + 1] = arr[i];
+        }
+
+        return result;
     }
 }
