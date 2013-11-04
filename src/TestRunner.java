@@ -18,9 +18,10 @@ public class TestRunner {
     }
 
     public static void runTests() throws Exception {
-        // run files from test1.csv sequentially, until there are no more files
+        // run files starting at test1.csv sequentially, until there are no more files
         for (int i = 1; fileExists(getInputFilePath(i)); i++) {
             for (MatchType matchType : MatchType.values()) {
+                // also, run the tests for each MatchType
                 boolean success = testFile(i, matchType);
                 System.out.println((success ? "PASSED" : "FAILED") + " test " + i + " with match type " + matchType.getFlag());
             }
@@ -53,7 +54,6 @@ public class TestRunner {
         String[] outputArray = output.split("\n");
 
         Scanner scanner = new Scanner(new File(getExpectedOutputFilePath(testID, matchType)));
-
         int outputLine = 1;
 
         while (scanner.hasNextLine() && success) {

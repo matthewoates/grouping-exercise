@@ -5,11 +5,7 @@ import java.io.*;
 public class Grouper {
     public static void main(String[] args) throws Exception {
         if (args.length == 1 && args[0].equals("-test")) {
-            try {
-                TestRunner.runTests();
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            TestRunner.runTests();
         } else if (args.length == 2) {
             String inputFile = args[0];
             MatchType matchType = MatchType.fromString(args[1]);

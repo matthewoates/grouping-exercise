@@ -59,6 +59,9 @@ public class Solver {
 
     public void writeResults(Writer w) {
         // all matching has been done. Now, print out the results
+        // when we find an Entry whose ID has not been set, we give it and all matching entries a unique ID
+        // this also ensures output consistency. new IDs will always show up in incremental values
+        // (which makes testing easier)
         CSVWriter writer = new CSVWriter(w);
 
         writer.writeNext(prependElement(header, "ID"));

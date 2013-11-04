@@ -23,9 +23,9 @@ public enum MatchType {
     public static MatchType fromString(String flag) {
         MatchType result = null;
 
-        for (MatchType m : MatchType.values()) {
-            if (flag.equalsIgnoreCase(m.flag)) {
-                return m;
+        for (MatchType matchType : MatchType.values()) {
+            if (flag.equalsIgnoreCase(matchType.flag)) {
+                result = matchType;
             }
         }
 
