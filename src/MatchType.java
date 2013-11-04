@@ -4,21 +4,21 @@ public enum MatchType {
     sameEmail("same_email"),
     samePhone("same_phone");
 
-    private String text;
+    private String flag;
 
-    MatchType(String text) {
-        this.text = text;
+    MatchType(String flag) {
+        this.flag = flag;
     }
 
-    public String getText() {
-        return text;
+    public String getFlag() {
+        return flag;
     }
 
-    public static MatchType fromString(String text) {
+    public static MatchType fromString(String flag) {
         MatchType result = null;
 
         for (MatchType m : MatchType.values()) {
-            if (text.equalsIgnoreCase(m.text)) {
+            if (flag.equalsIgnoreCase(m.flag)) {
                 return m;
             }
         }

@@ -35,7 +35,7 @@ public class Grouper {
     }
 
     public static void group(String path, MatchType matchType) throws Exception {
-        System.out.println("grouping " + path + "." + matchType.getText());
+        System.out.println("grouping " + path + "." + matchType.getFlag());
 
         Parser parser = new Parser(path);
         Entry[] entries = parser.getEntries();
