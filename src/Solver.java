@@ -35,11 +35,11 @@ public class Solver {
         return tabDelimiter ? '\t' : ',';
     }
 
-    public void findMatches(MatchType m) {
+    public void findMatches(MatchType matchType) {
         HashMap<String, Entry> anchors = new HashMap<String, Entry>();
 
         for (Entry entry : entries) {
-            ArrayList<String> fields = entry.getField(m.getFieldName());
+            ArrayList<String> fields = entry.getField(matchType.getFieldName());
 
             for (String field : fields) {
                 if (anchors.containsKey(field)) {
