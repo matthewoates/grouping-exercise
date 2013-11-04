@@ -8,10 +8,13 @@ endif
 
 default: bin java
 
-.PHONY: clean run bin java
+.PHONY: run test test-output-dirs bin java clean
 
 run:
 	cd bin && java -ea -cp .:lib/opencsv-2.3.jar grouper/Grouper $(RUN_ARGS)
+
+test:
+	cd bin && java -ea -cp .:lib/opencsv-2.3.jar grouper/Grouper -test
 
 bin:
 	mkdir -p bin
