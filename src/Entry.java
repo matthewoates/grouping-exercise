@@ -54,7 +54,11 @@ public class Entry {
                 data.put(fieldName, new ArrayList<String>());
             }
 
-            data.get(fieldName).add(sanitizeField(header[i], fields[i]));
+            String sanitizedField = sanitizeField(header[i], fields[i]);
+
+            if (sanitizedField != null && sanitizedField.length() > 0) {
+                data.get(fieldName).add(sanitizeField(header[i], fields[i]));
+            }
         }
     }
 
