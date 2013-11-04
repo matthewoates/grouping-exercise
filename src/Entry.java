@@ -59,4 +59,17 @@ public class Entry {
     public ArrayList<String> getField(String field) {
         return data.get(field);
     }
+
+    public String[] getOutputData() {
+        // append the id that has been matched
+        String[] result = new String[rawData.length + 1];
+
+        result[0] = "foo";
+
+        for (int i = 0; i < rawData.length; i++) {
+            result[i + 1] = rawData[i];
+        }
+
+        return result;
+    }
 }

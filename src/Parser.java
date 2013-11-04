@@ -10,13 +10,14 @@ import java.io.*;
 import java.util.*;
 
 public class Parser {
+    private String[] header;
     private Entry[] entries;
 
     Parser(String inputFile) throws Exception {
         CSVReader reader = new CSVReader(new FileReader(inputFile));
 
         List<String[]> data = reader.readAll();
-        String[] header = data.get(0);
+        header = data.get(0);
         entries = new Entry[data.size() - 1];
 
         for (int i = 1; i < data.size(); i++) {
@@ -27,5 +28,22 @@ public class Parser {
     //ArrayList<HashMap<String, ArrayList<String>>> getEntries() {
     Entry[] getEntries() {
         return entries;
+    }
+
+    public void writeResults() {
+        // all matching has been done. Now, print out the results
+        CSVWriter writer = new CSVWriter(new PrintWriter(System.out));
+
+        writer.writeNext(header);
+
+        for (Entry entry : entries) {
+            writer.writeNext(entry.getOutputData());
+        }
+
+        try {
+            writer.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

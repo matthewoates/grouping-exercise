@@ -15,7 +15,7 @@ import java.util.List;
 import grouper.*;
 
 public class Grouper {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         int exitCode = 0;
 
         if (args.length == 1 && args[0].equals("-test")) {
@@ -28,6 +28,8 @@ public class Grouper {
             // [input_file] [matching_type]
             String inputFile = args[0];
             MatchType m = MatchType.fromString(args[1]);
+
+            group(inputFile, m);
         } else {
             usage();
             exitCode = 1;
@@ -42,7 +44,7 @@ public class Grouper {
         Parser parser = new Parser(path);
         Entry[] entries = parser.getEntries();
 
-
+        parser.writeResults();
     }
 
     private static void usage() {
