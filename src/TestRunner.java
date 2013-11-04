@@ -28,7 +28,9 @@ public class TestRunner {
     }
 
     private static boolean testFile(String path) throws Exception {
-        Grouper.group(path);
+        for (MatchType m : MatchType.values()) {
+            Grouper.group(path, m);
+        }
 
         return true;
     }

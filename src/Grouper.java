@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import grouper.*;
+
 public class Grouper {
     public static void main(String[] args) {
         int exitCode = 0;
@@ -32,9 +34,12 @@ public class Grouper {
         System.exit(exitCode);
     }
 
-    public static void group(String path) throws Exception {
-        System.out.println("grouping " + path + ".");
+    public static void group(String path, MatchType matchType) throws Exception {
+        System.out.println("grouping " + path + "." + matchType.getText());
 
         Parser parser = new Parser(path);
+        Entry[] entries = parser.getEntries();
+
+
     }
 }
