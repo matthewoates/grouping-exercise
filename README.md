@@ -22,7 +22,7 @@ make run [matching_type] [input_file (path relative to bin/)]
 
 Firstly, all fields are sanitized. This removes things like phone number formatting and country codes.
 
-In `Solver.findMatches` we construct a many-to-many, symmetrical graph between entries. The simple construction of this  graph provides us with all the information we need.
+In `Solver.findMatches` we construct a many-to-many, symmetrical graph between entries. The simple construction of this  graph provides us with all the relational information we need.
 
 To output the data, we iterate through all entries in the order that they were in originally. Each node that has not been identified will be given an ID. That id will be shared with all matching entries.
 
