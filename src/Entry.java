@@ -5,6 +5,8 @@ import java.util.*;
 public class Entry {
     private String[] rawData;
     private HashMap<String, ArrayList<String>> data;
+    private ArrayList<Entry> matches = new ArrayList<Entry>();
+    private int id = 0;
 
     private static String getFieldName(String rawName) {
         // some data types span multiple fields
@@ -64,12 +66,40 @@ public class Entry {
         // append the id that has been matched
         String[] result = new String[rawData.length + 1];
 
-        result[0] = "foo";
+        result[0] = Integer.toString(id);
 
         for (int i = 0; i < rawData.length; i++) {
             result[i + 1] = rawData[i];
         }
 
         return result;
+    }
+
+    public void addMatch(Entry entry) {
+        assert(this.id == 0 && entry.id == 0);
+
+        this.matches.add(entry);
+        entry.matches.add(this);
+    }
+
+    public void setID(int id) {
+        assert(!idIsSet() && hasMatches());
+
+        this.id = id;
+
+        // recursively set the id of all other matching entries
+        for (Entry entry : matches) {
+            if (!entry.idIsSet()) {
+                entry.setID(id);
+            }
+        }
+    }
+
+    public boolean hasMatches() {
+        return matches.size() > 0;
+    }
+
+    public boolean idIsSet() {
+        return id != 0;
     }
 }

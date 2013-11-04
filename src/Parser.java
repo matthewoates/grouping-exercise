@@ -36,7 +36,13 @@ public class Parser {
 
         writer.writeNext(header);
 
+        int id = 1;
+
         for (Entry entry : entries) {
+            if (entry.hasMatches() && !entry.idIsSet()) {
+                entry.setID(id);
+                id += 1;
+            }
             writer.writeNext(entry.getOutputData());
         }
 
