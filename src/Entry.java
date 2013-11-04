@@ -3,6 +3,7 @@ package grouper;
 import java.util.*;
 
 public class Entry {
+    private String[] rawData;
     private HashMap<String, ArrayList<String>> data;
 
     private static String getFieldName(String rawName) {
@@ -23,6 +24,7 @@ public class Entry {
     Entry(String[] header, String[] fields) {
         assert(header.length == fields.length);
 
+        rawData = fields;
         data = new HashMap<String, ArrayList<String>>();
 
         for (int i = 0; i < header.length; i++) {
